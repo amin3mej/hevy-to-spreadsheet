@@ -1,0 +1,31 @@
+{
+  "name": "hevy-to-spreadsheet",
+  "module": "src/index.ts",
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@types/bun": "latest",
+    "eslint": "^9.13.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.11.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "3.3.3",
+    "typescript-eslint": "^8.12.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "type": "module",
+  "scripts": {
+    "prepare": "husky",
+    "lint": "bun eslint src --fix",
+    "format": "bun prettier . --write",
+    "start": "bun run src/index.ts"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  }
+}
