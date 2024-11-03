@@ -4,8 +4,11 @@
   "devDependencies": {
     "@eslint/js": "^9.13.0",
     "@types/bun": "latest",
+    "@types/excel-column-name": "^1.0.2",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^15.11.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
@@ -26,6 +29,10 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
+    "google-auth-library": "^9.14.2",
+    "googleapis": "^144.0.0",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.46",
     "zod": "^3.23.8"
   }
 }

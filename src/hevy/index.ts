@@ -1,12 +1,12 @@
-import { workoutsResponseSchema } from "./schema.ts";
-import { hevyConfigService } from "./hevy-config.service.ts";
+import { config } from "../config.ts";
+import { workoutsResponseSchema } from "../schema/hevy.ts";
 
 export const fetchWorkouts = async (page = 1) => {
   const response = await fetch(
-    hevyConfigService.baseUrl + "/workouts?page=" + page + "&pageSize=10",
+    config.HEVY_BASE_URL + "/workouts?page=" + page + "&pageSize=10",
     {
       headers: {
-        "api-key": hevyConfigService.apiKey,
+        "api-key": config.HEVY_API_KEY,
       },
     },
   );
@@ -15,7 +15,6 @@ export const fetchWorkouts = async (page = 1) => {
   if (!response.ok) {
     throw new Error(workoutsResponse.message);
   }
-  console.log({ workoutsResponse });
 
   return workoutsResponseSchema.parse(workoutsResponse);
 };
