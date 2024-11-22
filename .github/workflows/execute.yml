@@ -22,9 +22,13 @@ jobs:
 
       - run: bun install
 
-      - name: Get credentials
+      - name: Write secret files
         run: |
-          echo ${{ secrets.GOOGLE_CREDENTIALS }} > credentials.json
-          echo ${{ secrets.ENVIRONMENT }} > .env
+          cat << EOF > ./credentials.json
+          ${{ secrets.GOOGLE_CREDENTIALS }}
+          EOF
+          cat << EOF > ./.env
+          ${{ secrets.ENVIRONMENT }}
+          EOF
 
       - run: bun run start
