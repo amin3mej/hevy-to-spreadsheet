@@ -1,13 +1,9 @@
 name: Execute
 
 on:
-  #  schedule:
-  #    - cron: '0 23 * * FRI'
+  schedule:
+    - cron: "0 23 * * FRI"
   workflow_dispatch:
-  push:
-    branches:
-      - main
-      - test-cd
 
 jobs:
   execute:
