@@ -1,0 +1,30 @@
+name: Execute
+
+on:
+  schedule:
+    - cron: "0 23 * * FRI"
+  workflow_dispatch:
+
+jobs:
+  execute:
+    name:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - run: bun install
+
+      - name: Write secret files
+        run: |
+          cat << EOF > ./credentials.json
+          ${{ secrets.GOOGLE_CREDENTIALS }}
+          EOF
+          cat << EOF > ./.env
+          ${{ secrets.ENVIRONMENT }}
+          EOF
+
+      - run: bun run start

@@ -55,7 +55,7 @@ export const rowSchema = z.union([
     noteCell,
     timeCellSchema,
     timeCellSchema,
-    z.coerce.number(),
+    z.coerce.string(),
   ]),
 ]);
 export type Row = z.infer<typeof rowSchema>;
@@ -75,6 +75,11 @@ export const toRow = (row: {
     row.title,
     row.note,
     row.startedAt.format("h:mm:ss A"),
-    row.finishedAt?.format("h:mm:ss A"),
+    ...(row.finishedAt
+      ? [
+          row.finishedAt.format("h:mm:ss A"),
+          row.finishedAt.diff(row.startedAt, "minutes"),
+        ]
+      : []),
   ];
 };

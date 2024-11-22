@@ -1,14 +1,8 @@
 import { GoogleAuth } from "google-auth-library";
 import { google } from "googleapis";
-import moment from "moment";
 
 import { config } from "../config.ts";
-import {
-  type Row,
-  rowSchema,
-  spreadSheetDateFormat,
-  toRow,
-} from "../schema/spreadsheet.ts";
+import { rowSchema, toRow } from "../schema/spreadsheet.ts";
 
 const scopes = ["https://www.googleapis.com/auth/spreadsheets"];
 
