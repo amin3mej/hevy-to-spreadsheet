@@ -2,7 +2,7 @@ name: Execute
 
 on:
   schedule:
-    - cron: "0 23 * * FRI"
+    - cron: "0 23 * * *"
   workflow_dispatch:
 
 jobs:
